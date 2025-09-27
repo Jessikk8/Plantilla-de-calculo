@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solucionador de Programación Lineal</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🔢 Solucionador de Programación Lineal</h1>
+            <p>Resuelve problemas usando métodos Simplex, Dos Fases y M</p>
+        </header>
+
+        <div class="input-section">
+            <div class="card">
+                <h2>📊 Configuración del Problema</h2>
+                
+                <div class="form-group">
+                    <label>Número de Variables:</label>
+                    <input type="number" id="numVariables" min="2" max="10" value="2">
+                </div>
+                
+                <div class="form-group">
+                    <label>Número de Restricciones:</label>
+                    <input type="number" id="numConstraints" min="1" max="10" value="2">
+                </div>
+                
+                <button onclick="generateInputs()" class="btn btn-primary">Generar Formulario</button>
+            </div>
+
+            <div id="problemInputs" class="card" style="display: none;">
+                <h3>📝 Función Objetivo</h3>
+                <div class="objective-section">
+                    <div class="form-group">
+                        <select id="optimizationType">
+                            <option value="max">Maximizar</option>
+                            <option value="min">Minimizar</option>
+                        </select>
+                        Z =
+                        <div id="objectiveInputs" class="inline-inputs"></div>
+                    </div>
+                </div>
+
+                <h3>🔒 Restricciones</h3>
+                <div id="constraintsSection"></div>
+
+                <h3>⚙️ Método de Resolución</h3>
+                <div class="form-group">
+                    <select id="method">
+                        <option value="simplex">Método Simplex</option>
+                        <option value="dosFases">Método de Dos Fases</option>
+                        <option value="bigM">Método de la M Grande</option>
+                    </select>
+                </div>
+
+                <button onclick="solveProblem()" class="btn btn-success">🚀 Resolver Problema</button>
+            </div>
+        </div>
+
+        <div id="resultsSection" style="display: none;">
+            <div class="card">
+                <h2>📈 Resultados</h2>
+                <div class="tabs">
+                    <button class="tab-button active" onclick="showTab('iterations')">Iteraciones</button>
+                    <button class="tab-button" onclick="showTab('solution')">Solución Final</button>
+                </div>
+
+                <div id="iterationsTab" class="tab-content active">
+                    <div class="iteration-controls">
+                        <button onclick="previousIteration()" class="btn btn-secondary" id="prevBtn">⬅️ Anterior</button>
+                        <span id="iterationCounter">Iteración 0</span>
+                        <button onclick="nextIteration()" class="btn btn-secondary" id="nextBtn">Siguiente ➡️</button>
+                    </div>
+                    <div id="iterationsContainer"></div>
+                </div>
+
+                <div id="solutionTab" class="tab-content">
+                    <div id="finalSolution"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
